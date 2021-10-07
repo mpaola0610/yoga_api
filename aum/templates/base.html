@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="../static/css/main.css">
+<script src ="js/main.js"></script>
+
+
+<title>Yoga Portfolio</title>
+</head>
+<body>
+
+        <!-- NavBar Here -->
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color:brown;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            
+            <!-- Nav Items -->
+            <div class="container collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand" href="#">
+                    <img
+                      src="../static/css/images/photo-1523293457621-4c51beb16d37.jpg"
+                      height="100"
+                    
+                      alt=""
+                      loading="lazy"
+                    />
+                  </a>
+                
+
+                <ul id="horizontal-list">
+                    <a href="{{ url_for('site.home') }}">
+                        <li>Home</li>
+                    </a>
+                    <a href="{{ url_for('site.classes') }}">
+                        <li>Classes</li>
+                    </a>
+                    <a href="{{ url_for('site.profile') }}">
+                        <li>Profile</li>
+                    </a>
+    
+                    <!--  User Auth Check for SignIn/SignUp Nav Buttons -->
+                    <!-- line below should say "is_authenticated not isauthenticated" -->
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.logout') }}">
+                        <li>Log Out</li>
+                    </a>
+    
+                    {% else %}
+                    <a href="{{ url_for('auth.signin') }}">
+                        <li>Sign In</li>
+                    </a>
+                    
+                    <a href="{{ url_for('auth.signup') }}">
+                        <li>Sign Up !</li>
+                    </a>
+
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider">
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div></div>
+                    </li>
+
+  <!-- <div class="container">
+    <button onclick="stopSnippet()"> Stop Music</button>
+    <div class="images">
+
+    </div>
+  </div> -->
+                  
+                  
+                                  
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+            
+        <!--  End of Nav -->
+    
+    {% block content %}
+    {% endblock content %}
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>
