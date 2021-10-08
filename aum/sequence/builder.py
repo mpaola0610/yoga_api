@@ -7,27 +7,41 @@ balance = ['tree', 'warrior3', 'dancer', 'toe-hold','single knee-hug','chair','s
 cooldown = ['butterfly', 'wide-leg stretch','seated forward fold','pigeon','reverse pigeon','lying-spinal twist','happy-baby',
     'childs-pose','cat-cow','thread-needle']
 
-def sequence():
-    routine=[]
-    r_warmups=[random.choice(warmups)for i in range(4)]
-    for r in r_warmups:
-        routine.append(r)
-        print(f'{r}\n')
-    for move in warriors:
-        routine.append(move)
-        print(f'{move}\n')
-    r_balance=random.sample(balance,2)    
-    for b in r_balance:
-        routine.append(b)
-        print(f'{b}\n')
-    r_cooldown= random.sample(cooldown, 4)
-    for c in r_cooldown:
-        routine.append(c)
-        print(f'{c}\n')
-    print(routine)
-       
+class displaySequence:
+
+    def __init__ (self, custom = True):
+        self.custom = custom
+    
+    def sequence(self):
+        self.warrior= []
+        self.routine=[]
+        self.r_warmups=[random.choice(warmups)for i in range(4)]
+        for r in self.r_warmups:
+            self.routine.append(r)
+            print(f'{r}\n')
+        for move in warriors:
+            self.warrior.append(move)
+            self.routine.append(move)
+            print(f'{move}\n')
+        self.r_balance=random.sample(balance,2)    
+        for b in self.r_balance:
+            self.routine.append(b)
+            print(f'{b}\n')
+        self.r_cooldown= random.sample(cooldown, 4)
+        for c in self.r_cooldown:
+            self.routine.append(c)
+            print(f'{c}\n')
+        print(self.routine)
+        return self.r_warmups, self.warrior, self.r_balance, self.r_cooldown, self.routine
+
+# dylan = displaySequence()       
         
-sequence()        
+def runSequence(client):        
+    client.sequence()
+    
+
+
+# runSequence(dylan)
         
     
     

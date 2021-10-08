@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, redirect,url_for,flash
 from werkzeug.security import check_password_hash
-from aum.forms import UserLoginForm
+from aum.forms import UserLoginForm, clicker
 from aum.models import User,db
-
+from aum.helpers import token_required
 #Imports for Flask Login 
 from flask_login import login_user, logout_user, current_user, login_required
+from aum.sequence.builder import displaySequence, runSequence
 
 auth = Blueprint('auth',__name__, template_folder= 'auth_templates')
 
@@ -63,3 +64,26 @@ def signin():
 def logout():
     logout_user()
     return redirect(url_for('site.home'))
+
+
+@auth.route('/display', methods = ['GET','POST'])
+
+def display():
+    form = clicker()
+    # if form.validate_on_submit():
+    answer = form.yesOrno.data
+    form.yesOrno.data = ''
+    person = displaySequence()
+    runSequence(person)
+    
+
+    
+    return render_template('display.html',
+    form = form,
+    person = person,
+    answer = answer
+    )
+    # else:
+    #     return render_template('display.html',
+    # form = form)
+    

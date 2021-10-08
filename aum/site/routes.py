@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint,render_template, request, redirect,url_for,flash
 from flask_login.utils import login_required
+
+
 '''
     Note that in the below code,
     some arguments are specified when creating the Blueprint object
@@ -19,3 +21,5 @@ def profile():
 @site.route('/classes')
 def classes():
     return render_template('classes.html')
+
+#

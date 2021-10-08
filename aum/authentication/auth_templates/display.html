@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+{{ form.yesOrno() }}
+
+{{ form.submit_button() }}<br><br>
+
+
+<table class =' table table-striped table-hover table-secondary'>
+
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Warm Up 1</th>
+        <th scope="col">Warm Up 2</th>
+        <th scope="col">Warm Up 3</th>
+        <th scope="col">Warm Up 4</th>
+        <th scope="col">Warriors 1</th>
+        <th scope="col">Warriors 2</th>
+        <th scope="col">Warriors 3</th>
+        <th scope="col">Balance 1</th>
+        <th scope="col">Balance 2</th>
+        <th scope="col">Cooldown 1</th>
+        <th scope="col">Cooldown 2</th>
+        <th scope="col">Cooldown 3</th>
+        <th scope="col">Cooldown 4</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row">1</th>
+        <td>{{ person.routine[0] }}</td>
+        <td>{{ person.routine[1] }}</td>
+        <td>{{ person.routine[2] }}</td>
+        <td>{{ person.routine[3] }}</td>
+        <td>{{ person.routine[4] }}</td>
+        <td>{{ person.routine[5] }}</td>
+        <td>{{ person.routine[6] }}</td>
+        <td>{{ person.routine[7] }}</td>
+        <td>{{ person.routine[8] }}</td>
+        <td>{{ person.routine[9] }}</td>
+        <td>{{ person.routine[10] }}</td>
+        <td>{{ person.routine[11] }}</td>
+        <td>{{ person.routine[12] }}</td>
+        
+        </tr>
+        
+    </tbody>
+</table>
+</div>
+{% endblock content %}

@@ -5,8 +5,8 @@ from aum.models import db,User,Sequence,sequence_schema,sequences_schema
 
 api = Blueprint('api',__name__, url_prefix = '/api')
 
-@api.route('/getdata')
-@token_required
+@api.route('/getdata', methods = ['GET'])
+# @token_required
 
 def get_data(current_user_token):
     return {'some' : 'value'}
